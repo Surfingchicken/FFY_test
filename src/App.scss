@@ -1,0 +1,426 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    
+}
+body{
+    text-align: center;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 500;
+}
+.GlobalContainer{
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    box-sizing:border-box ;
+    height: 100vh;
+
+}
+
+.Scheduler{
+    color: #243D6F;
+    box-sizing: border-box;
+    margin: 5rem 8.75rem;
+    text-align:left ;
+    .Title{
+        display: grid;
+        grid-template-columns: 9fr 1fr;
+        
+        h2{
+            font-size: 2.25rem;
+        }
+        svg{
+            height: 5rem;
+            width: 5rem;
+        }
+    }
+    .HoursContainer{
+        display: grid;
+        grid-template-rows: repeat(11,1fr);
+        .Hour{
+            display: grid;
+            grid-template-columns: 1fr 9fr;
+            box-sizing: border-box;
+            height: 7.25rem;
+
+        }
+        .Timing{
+            color: #A4B0C3;
+            font-family: Montserrat;
+            font-size: 1.625rem;
+            font-style: normal;
+            font-weight: 500; 
+        }
+        .Meeting{
+            color: #243D6F;
+            font-family: Montserrat;
+            font-size: 1.75rem;
+            font-style: normal;
+            font-weight: 500; 
+            display: grid;
+            background-color: #3c81f93b;
+            border-left: solid 1rem #3c81f93b;
+            grid-template-columns: 8fr 2fr;
+            .Content{
+                h3{
+                    margin-left: 7.5rem ;
+                }
+            }
+            .Supp{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+          
+                
+            }
+            
+        }
+    }
+}
+
+.Modal, .Overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+
+}
+
+.Overlay {
+    background: rgba(0, 0, 0, 0.50); 
+    z-index: 1;
+}
+.ModalContent {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 50vw;
+    height: 35vh;
+    transform: translate(-50%, -50%);
+    background: #f1f1f1;
+    border-radius: 3px;
+    z-index: 2;
+    .ModalContentContainer{
+        margin: 1rem 3.5rem;
+        .ModalTitleContainer{
+            display: flex;
+            justify-content:left;
+            align-items:baseline;
+            .MeetingTitle::placeholder{
+                color: #5C5F6C;
+                border: none;
+                font-family: Montserrat;
+                font-size: 3rem;
+                font-weight: 500; 
+            }
+            .MeetingTitle{
+                color: #5C5F6C;
+                border: none;
+                font-family: Montserrat;
+                font-size: 3rem;
+                font-weight: 500; 
+                width: 90%;
+                border-bottom: solid 0.1px;
+                padding: 1rem;
+            }
+            button{
+                margin-left: 1.75rem;
+                width: 2.3125rem;
+                height: 2.3125rem;
+                background-color: #243D6F;
+                position: relative;
+                top: 0.75rem;
+                
+            }
+            .chrome-picker{
+                position: absolute  ;
+                top: -3rem;
+             
+            }  
+        }
+        svg{
+            width: 2.3125rem;
+            height: 2.3125rem; 
+        }
+        .MeetingDay{
+            margin-top: 3rem;
+            display: flex;
+            color: #222;
+            .DayPicker, .HourPicker{
+                margin: 0 1rem;
+                width: fit-content;
+                justify-content:center ;
+                justify-items: center;
+                background-color: #E0CCFC;
+                .ModalCalendar{
+                    margin: 0;
+                    position: absolute;
+                    width: 20rem;
+                    background-color: #fff;
+                    color: #222;
+                    border: solid 0.1rem #2222222d;
+                    z-index: 7;
+                    svg{
+                        filter: invert(100%) ;
+                        width: 0.51206rem;
+                        height: 0.82925rem; 
+                    }
+                    h2,.DayLetter,button{
+                        font-size: 0.875rem;
+                    }
+                    .PrevMonth{
+                        text-align:right ;
+                    }
+                    .NextMonth{
+                        text-align: left;
+                    }
+                    .ModalMonthTitle{
+                        height: 5rem;
+                        border: none;
+                        color: var(--00-on-surface-medium-emphasis, rgba(0, 0, 0, 0.60));
+                        font-feature-settings: 'clig' off, 'liga' off;
+                        font-size: 0.875rem;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 1.5rem;
+                        letter-spacing: 0.00625rem;
+                    }
+                    .ModalDayLetter{
+                        height: 2.5rem;
+                    }
+                    .ModalDay{
+                        height: 2.5rem;
+                        button{
+                            color: #222;
+                            height: 1.5rem;
+                            width: 1.5rem;
+                        }
+                    }
+                   
+                }
+            }
+            
+        }
+        .MeetingHour{
+            margin-top: 3rem;
+            display: flex;
+            color: #222;
+            .HourPicker{
+                margin: 0 1rem;
+                width: fit-content;
+                justify-content:center ;
+                justify-items: center;
+                background-color: #E0CCFC;
+                .Clock{
+                    margin: 0;
+                    position: absolute;
+                    background-color: #fff;
+                    color: #222;
+                    border-radius: 0.25rem;
+                    background: var(--surface, #FFF);
+                    box-shadow: 0px 5.30739px 5.30739px 0px;
+                    z-index: 7;
+                    
+                    label{
+                        margin-left: 2rem;
+                        color: #717370;
+                        font-feature-settings: 'clig' off, 'liga' off;
+                        font-size: 0.625rem;
+                        font-style: normal;
+                        line-height: 1rem; 
+                        letter-spacing: 0.09375rem;
+                        text-transform: uppercase; 
+                    }
+                    .HourInput{
+                        display: flex;
+                        padding: 1rem;
+                        color: var(--grey-900, #202124);
+                        text-align: center;
+                        font-family: Roboto;
+                        
+                        .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+                            font-size: 4rem;
+                        }
+                        .Separator{
+                            display: flex;
+                            margin: auto 0;
+                            font-size: 4rem;
+                        }
+                        .CentralC{
+                            width: 8rem;
+                        }
+                        .CentralC:focus{
+                            background-color: #FFF;
+                            color: #6200EE;
+                        }
+                        .AMPM{
+                            margin: 0 1rem;
+                            width: 4.31225rem; 
+                            justify-content:center ;
+                            justify-items: center;
+                            display: flex;
+                            flex-direction: column;
+                            button{
+                                height:calc(100%/2);
+                                width: 100%;
+                                border-radius: 0.33169rem;
+                                border: 1.327px solid #DADCE0;
+                                background: var(--surface, #FFF); 
+                            }
+                        }
+                    }
+                    .css-ku1d3k-MuiTimeClock-root{
+                        width: auto;
+                        height: auto;
+                    }
+                    div{
+                        .ButtonClock{
+                            margin: 0 2rem 1rem 0;
+                            text-align: right;
+                            button{
+                                color: var(--01-primary-500, #6200EE);
+                                text-align: center;
+                                font-feature-settings: 'clig' off, 'liga' off;
+                                /* Button */
+                                font-size: 0.875rem;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 1rem; /* 114.286% */
+                                letter-spacing: 0.07813rem;
+                                text-transform: uppercase; 
+                            }
+                        }
+
+                    }
+                                        
+                }
+            }
+            svg{
+                width: 2.3125rem;
+                height: 2.3125rem; 
+            }
+        }
+    .Commentary{
+        margin-top: 3rem;
+        padding: 1rem;
+        width: 95%;
+        border: none;
+        border-bottom: solid 0.1rem;
+    }
+    .AddMeeting{
+        position: absolute;
+        font-size: 1.5rem; 
+        line-height: 1.32688rem;
+        right: 5rem;
+        bottom: 2rem;
+        width: 9.375rem;
+        height: 2.5rem;
+        flex-shrink: 0; 
+        background-color: #6200EE;
+        color: #fff;
+    }   
+    }
+}
+
+
+
+.CalendarContainer{
+    background:#2a2e41b2 ; 
+    backdrop-filter: blur(40.774227142333984px); 
+    .Calendar{
+        margin: 0 7.5rem;
+        color: #fff;
+    }
+    .MonthTitle{
+        height: 13.375rem; 
+        display: grid;
+        grid-auto-flow: column ;
+        box-shadow: 0  0.1rem rgba(255,255,255, 0.13);
+        border-bottom: solid 0.1rem rgba(0, 0, 0, 0.2);
+        .PrevMonth{
+            text-align: left;
+            svg{
+                width: 1.125rem;
+                height: 2.25rem;
+                flex-shrink: 0; 
+            }
+        }
+        .NextMonth{
+            text-align: right;
+            svg{
+                width: 1.125rem;
+                height: 2.25rem;
+                flex-shrink: 0; 
+            }
+        }
+        h2{
+            font-size: 2.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center ;
+        }
+    }
+    .Month{
+        display: grid;
+        grid-template-columns: repeat(7,1fr);
+        grid-template-rows: repeat(5,1fr);
+        .Day,.DayLetter{
+            display: flex;
+            height: 7.5rem;
+            justify-content: center;
+            align-items: center;
+            button{
+                font-size: 1.8125rem;
+                font-weight: 500;
+                font-family: Montserrat;
+                height: 5rem;
+                width: 5rem;
+                border-radius: 100%;
+                color: #fff;
+            }
+            button:hover, .Selected{
+                background-color: #3C82F9;
+            }
+            
+            .NotCurrMonth{
+                opacity: 0.5;
+            }
+        }
+        .col-start-2{
+            grid-column-start: 1;
+        }
+        .col-start-3{
+            grid-column-start: 2;
+        }
+        .col-start-4{
+            grid-column-start:3 ;
+        }
+        .col-start-5{
+            grid-column-start: 4;
+        }
+        .col-start-6{
+            grid-column-start: 5;
+        }
+        .col-start-7{
+            grid-column-start: 6;
+        }
+        .DayLetter{
+            font-size: 1.625rem; 
+            opacity: 0.6; ;
+        }
+    }
+}
+button{
+        border: none;
+        background: none;
+}
+button:hover{
+    cursor: pointer;
+}
+
+
